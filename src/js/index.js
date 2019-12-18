@@ -10,6 +10,9 @@ import { getsCardsOptions } from './data';
 export const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk/cohort5' : 'https://praktikum.tk/cohort5';
 export let myId = '';
 
+new Popup(document.querySelector('.user-info__button'), document.querySelector('.popup-info'));
+new PopupEdit(document.querySelector('.user-info__edit-button'), document.querySelector('.popup-edit'));
+
 const container = document.querySelector('.places-list');
 const cardList = new CardList(container, window.data);
 
