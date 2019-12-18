@@ -10,9 +10,6 @@ import { getsCardsOptions } from './data';
 export const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk/cohort5' : 'https://praktikum.tk/cohort5';
 export let myId = '';
 
-const infoPopup = new Popup(document.querySelector('.user-info__button'), document.querySelector('.popup-info'));
-const editPopup = new PopupEdit(document.querySelector('.user-info__edit-button'), document.querySelector('.popup-edit'));
-
 const container = document.querySelector('.places-list');
 const cardList = new CardList(container, window.data);
 
@@ -76,10 +73,10 @@ const validate = (element) => {
                 break;
 
             default:
-                if (element.value.length == 1) {
+                if (element.value.length === 1) {
                     errorElement.textContent = 'Должно быть от 2 до 30 символов';
                 }
-                if (element.value.length == 0) {
+                if (element.value.length === 0) {
                     errorElement.textContent = 'Это обязательное поле';
                 }
                 break;
@@ -94,7 +91,6 @@ const validate = (element) => {
 
 // валидация формы
 const validateSubmit = (form) => {
-
     let isValid = false;
     const inputs = Array.from(form.form);
 
@@ -106,7 +102,6 @@ const validateSubmit = (form) => {
 
 // добавление карточки
 const addCard = (event) => {
-
     event.preventDefault();
 
     document.querySelector('.popup-info').classList.remove('popup_is-opened');
@@ -131,7 +126,6 @@ const addCard = (event) => {
 
 // редактирование профиля
 const editProfile = (event) => {
-
     event.preventDefault();
     const name = editForm.name.value;
     const about = editForm.job.value;
@@ -141,7 +135,7 @@ const editProfile = (event) => {
 
     const api = new Api(mePatch);
     api.requestToApi({ name, about }).then(result => {
-        console.log(result);
+        //console.log(result);
     })
 }
 

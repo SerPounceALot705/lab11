@@ -22,7 +22,6 @@ export class Popup {
 export class PopupImg extends Popup {
 
     open(url) {
-
         if (typeof(url) === 'string') {
             this.popup.classList.add('popup_is-opened');
             this.popup.querySelector('.popup__content-img').setAttribute('src', url);

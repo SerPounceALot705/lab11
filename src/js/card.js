@@ -4,7 +4,6 @@ import { myId } from './index';
 import { getsCardsOptions } from './data';
 import { serverUrl } from './index';
 
-
 export class Card {
     constructor(obj) {
         this.name = obj.name;
@@ -17,10 +16,7 @@ export class Card {
     }
 
     like(event) {
-
-        console.log(this.likes);
-
-        if (this.likes.filter(like => like._id == myId).length > 0) {
+        if (this.likes.filter(like => like._id === myId).length > 0) {
             const del = getsCardsOptions(serverUrl, `cards/like/${this.idCard}`, 'DELETE');
             const api = new Api(del);
             event.target.classList.remove('place-card__like-icon_liked');
@@ -42,7 +38,6 @@ export class Card {
     }
 
     remove(event) {
-
         if (window.confirm("Вы действительно хотите удалить эту карточку?")) {
             const delCard = getsCardsOptions(serverUrl, `cards/${this.idCard}`, 'DELETE');
             const api = new Api(delCard);
@@ -54,14 +49,12 @@ export class Card {
     }
 
     open(event) {
-
         if (this.isPopupImgOpen(event.target)) {
             this.popupImg.open(this.link);
         }
     }
 
     create() {
-
         const placeCard = document.createElement("div");
         placeCard.classList.add("place-card");
         const template = `
@@ -83,12 +76,12 @@ export class Card {
 
             placeCard.querySelector(".likes-Counter").textContent = this.likes.length;
 
-            if (this.likes.filter(like => like._id == myId).length > 0) {
+            if (this.likes.filter(like => like._id === myId).length > 0) {
                 placeCard.querySelector('.place-card__like-icon').classList.add('place-card__like-icon_liked');
             }
         }
 
-        if (this.owner._id == myId) {
+        if (this.owner._id === myId) {
             const delIcon = document.createElement('button');
             delIcon.classList.add('place-card__delete-icon');
 
@@ -106,7 +99,6 @@ export class Card {
     }
 
     isPopupImgOpen(element) {
-
         if (!element.classList.contains('place-card__delete-icon') &&
             !element.classList.contains('place-card__like-icon'))
             return true;

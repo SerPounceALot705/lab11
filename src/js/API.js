@@ -39,7 +39,7 @@ export class Api {
                         authorization: this.token,
                         'Content-Type': this.contentType
                     },
-                    body: data == null ? '' : JSON.stringify(data)
+                    body: data === null ? '' : JSON.stringify(data)
                 })
                 .then(promise => {
                     if (promise.ok) {
