@@ -137,9 +137,7 @@ const editProfile = (event) => {
     document.querySelector('.popup-edit').classList.remove('popup_is-opened');
 
     const api = new Api(mePatch);
-    api.requestToApi({ name, about }).then(result => {
-        //console.log(result);
-    })
+    api.requestToApi({ name, about });
 }
 
 newForm.form.addEventListener('submit', addCard);
